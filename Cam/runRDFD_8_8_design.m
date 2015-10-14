@@ -22,7 +22,7 @@ lowdwell=2*pi-(betarise+highdwell+betafall);
 Rp=6; 
 
 % Radius of follower
-Rf= .5;
+Rf=0.5;
 
 % Base circle radius of cam
 Rb=Rp-Rf;
@@ -85,9 +85,12 @@ J=omega^3*h*[ytrplprise/betarise^3 ytrplphighdwell ytrplpfall/betafall^3 ytrplpl
 
 
 % %%%%%%%%%%%%%%%%%%%%%%% Pressure Angle %%%%%%%%%%%%%%%%%%%%%%%%%%%
+v=V/omega;
+a=A/(omega^2);
+
 phi = zeros(1,402);
 for i=1:1:402
-phi (:,i) = atan2(V(i),(S(i)+Rp));
+phi (:,i) = atan2(v(i),(S(i)+Rp));
 end
 
 
@@ -97,14 +100,13 @@ end
 % Not a concave cam, so analysis is unnecessary
 rhocam = zeros(1,402);
 for i=1:1:402 
-rhocam (:,i) = ((Rb+S(i))^2 + V(i)^2)^(3/2)/((Rb+S(i))^2+2*V(i)^2-A(i)*(Rb+S(i)));
+rhocam (:,i) = (((Rb+S(i))^2 + (v(i))^2)^(3/2))/((Rb+S(i))^2 + 2*(v(i))^2 - a(i)*(Rb+S(i)));
 end
 
 
 
 
 % %%%%%%%%%%%%%%%% Avoiding Cusp and/or Undercutting %%%%%%%%%%%%%%%%
-
 
 
 
@@ -154,3 +156,4 @@ maxS=max(S)
 maxV=max(V) 
 maxA=max(A) 
 maxJ=max(J)
+
