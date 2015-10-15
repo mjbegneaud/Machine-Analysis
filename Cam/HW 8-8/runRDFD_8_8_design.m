@@ -147,14 +147,17 @@ end
 figure(2)
 subplot(3,1,1)
 plot(theta*180/pi,phi*180/pi)
+axis tight
 xlabel('Theta, deg')
 ylabel('Phi, deg')
 subplot(3,1,2)
 plot(theta*180/pi,rhocam)
+axis tight
 xlabel('Theta, deg')
 ylabel('Rho Cam, mm')
 subplot(3,1,3)
 plot(theta*180/pi,rhopitch)
+axis tight
 xlabel('Theta, deg')
 ylabel('Rho Pitch Path, mm')
 
