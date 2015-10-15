@@ -19,7 +19,7 @@ betafall=90*pi/180;
 lowdwell=2*pi-(betarise+highdwell+betafall);
 
 % Prime circle radius of cam
-Rp=14; 
+Rp=6; 
 
 % Radius of follower
 Rf=0.5;
@@ -114,6 +114,26 @@ end
 rhopitch = zeros(1,402);
 for i=1:1:402 
 rhopitch (:,i) = (((Rp + S(i))^2 + (v(i))^2)^(3/2))/((Rp + S(i))^2 + 2*(v(i))^2 - a(i)*(Rp + S(i)));
+end
+
+
+
+
+% %%%%%%%%%%%%%%%%%%%%%%%%% Results %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Displays results to the user
+
+> i=find(rhocam<0);
+> min_abs_negative_rhocam_values=min(abs(rhocam(i)));
+if min_abs_negative_rhocam_values < Rf
+	fprintf('Curvature radius of cam satisfies design requirements.');
+else
+	fprintf('Curvature of radius of cam dose not satisfy design requirements.');
+end
+
+if abs(min(rhopitch)) < 2*Rf
+	fprintf('Curvature radius of pitch satisfies design requirements.');
+else
+	fprintf('Curvature radius of pitch does not satisfy design requirements.');
 end
 
 
