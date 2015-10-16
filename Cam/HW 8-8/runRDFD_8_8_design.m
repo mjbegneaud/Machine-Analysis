@@ -5,6 +5,7 @@
 % This is a rise dwell fall dwell problem
 % The rate of rotation is 10 RPM
 % Units are mm
+% Vary the pitch radius (Rp) until suitable design is found.
 
 clear
 clc
@@ -19,10 +20,10 @@ betafall=90*pi/180;
 lowdwell=2*pi-(betarise+highdwell+betafall);
 
 % Prime circle radius of cam
-Rp=6; 
+Rp=5.2; 
 
 % Radius of follower
-Rf=0.5;
+Rf=0.25;
 
 % Base circle radius of cam
 Rb=Rp-Rf;
@@ -122,18 +123,26 @@ end
 % %%%%%%%%%%%%%%%%%%%%%%%%% Results %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Displays results to the user
 
-> i=find(rhocam<0);
-> min_abs_negative_rhocam_values=min(abs(rhocam(i)));
-if min_abs_negative_rhocam_values < Rf
-	fprintf('Curvature radius of cam satisfies design requirements.');
+if phi*180/pi < 30
+    fprintf('Pressure angle of cam satisfies design requirements.\n')
 else
-	fprintf('Curvature of radius of cam dose not satisfy design requirements.');
+    fprintf('Pressure angle of cam does not satisfy design requirements.\n')
 end
 
-if abs(min(rhopitch)) < 2*Rf
-	fprintf('Curvature radius of pitch satisfies design requirements.');
+
+i=find(rhocam<0);
+min_abs_negative_rhocam_values=min(abs(rhocam(i)));
+if min_abs_negative_rhocam_values > Rf
+	fprintf('Curvature radius of cam satisfies design requirements.\n');
 else
-	fprintf('Curvature radius of pitch does not satisfy design requirements.');
+	fprintf('Curvature of radius of cam does not satisfy design requirements.\n');
+end
+
+
+if abs(min(rhopitch)) > 2*Rf
+	fprintf('Curvature radius of pitch satisfies design requirements.\n');
+else
+	fprintf('Curvature radius of pitch does not satisfy design requirements.\n');
 end
 
 
@@ -187,8 +196,8 @@ ylabel('Rho Pitch Path, mm')
 % xlabel('Theta, deg')
 % ylabel('Jerk, mm/s^3')
 % grid on
-maxS=max(S)
-maxV=max(V) 
-maxA=max(A) 
-maxJ=max(J)
+% maxS=max(S)
+% maxV=max(V) 
+% maxA=max(A) 
+% maxJ=max(J)
 
