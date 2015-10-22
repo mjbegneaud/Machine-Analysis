@@ -4,4 +4,5 @@ Programs written in MATLAB to analyze mechanisms in a Mechanical Engineering cou
 Mathematical functions and problems solved originate from the following text:
 
 Design of Machinery: An Introduction to the Synthesis and Analysis of Mechanisms and Machines, 5th Ed.
+
 by Norton, Robert. L
