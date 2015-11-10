@@ -2,12 +2,13 @@
 % In collaboration with:
 %   Ronald Kisor
 %   Chandler Lagarde
+%   Jace Delcambre
 % Date: 11/9/15
 
 % This routine solves for the unknown thetas, theta3, theta4, omega3,
 % omega4, alpha3, and alpha 4 for a fourbar linkage.
 % The dynamic forces and torque are then solves for using a mass density of
-% 1kg/0.25m
+% 1kg/25cm
 clear
 clc
 
@@ -24,7 +25,7 @@ t3est=106.6;
 t4est=131.8;
 tunknownguess=[t3est; t4est]*pi/180; 
 
-% Link lengths
+% Link lengths in cm
 a=2;
 b=7;
 c=9;
@@ -141,17 +142,17 @@ a4 = alphas(2,:)';
 
 % Center of gravity accelerations & inertia values
 % link 2
-m2 = (a/0.25);
+m2 = (a/25);
 i2 = (1/3)*m2*(a^2);
 axg2 = -(a/2)*w2^2*cos(t2)-(a/2)*a2*sin(t2);
 ayg2 = -(a/2)*w2^2*sin(t2)+(a/2)*a2*cos(t2);
 % link 3
-m3 = (b/0.25);
+m3 = (b/25);
 i3 = (1/12)*m3*(b^2);
 axg3 = a*-cos(t2)*w2^2+a*-sin(t2)*a2 + (b/2)*-cos(t3).*w3.^2+(b/2)*-sin(t3).*a3;
 ayg3 = a*-sin(t2)*w2^2+a*cos(t2)*a2 + (b/2)*-sin(t3).*w3.^2+(b/2)*cos(t3).*a3;
 % link 4
-m4 = (c/0.25);
+m4 = (c/25);
 i4 = (1/3)*m4*(c^2);
 axg4 = (c/2)*-cos(t4).*w4.^2+(c/2)*-sin(t4).*a4;
 ayg4 = (c/2)*-sin(t4).*w4.^2+(c/2)*cos(t4).*a4;
