@@ -1,3 +1,4 @@
+% Script used to calculate the dynamic forces present in a fourbar linkage throughout its range of motion.
 % Author: Matthew J. Begneaud
 % In collaboration with:
 %   Ronald Kisor
