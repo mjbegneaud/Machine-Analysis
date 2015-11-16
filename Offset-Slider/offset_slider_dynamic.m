@@ -1,4 +1,4 @@
-% Offset Slider Kinematic and Dynamic Analysis
+% Script used for kinematic and dynamic analysis of an offset slider mechanism.
 % Author: Matthew Begneaud
 % In collaboration with:
 %     Jace Delcambre  
